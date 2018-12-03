@@ -29,14 +29,14 @@ CompressedGraph::~CompressedGraph(){
 
 }
 
-vector<int> CompressedGraph::getNeightbours(int a){
+vector<int> CompressedGraph::getNeighbours(int a){
 
 }
 
-vector<int> CompressedGraph::getReverseNeightbours(int a){
+vector<int> CompressedGraph::getReverseNeighbours(int a){
 
 }
 
-bool CompressedGraph::checkConnected(int a, int b){
+bool CompressedGraph::checkConnection(int a, int b){
 
 }
