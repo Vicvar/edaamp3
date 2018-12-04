@@ -11,7 +11,6 @@ public:
 	bool checkConnection(int, int);
 private:
 	bool cCDFS(int, int, sdsl::bit_vector);
-	bool cCRDFS(int, int, sdsl::bit_vector);
 	int max_node;
 	sdsl::bit_vector b;
 	sdsl::rank_support_v<> rankb;
