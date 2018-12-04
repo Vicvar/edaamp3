@@ -10,10 +10,10 @@ public:
 	std::vector<int> getReverseNeighbours(int);
 	bool checkConnection(int, int);
 private:
-	bool cCDFS(int, int, sdsl::bit_vector);
+	void cCDFS(int, int, sdsl::bit_vector);
 	int max_node;
 	sdsl::bit_vector b;
-	sdsl::rank_support_v<> rankb;
-	sdsl::select_support_mcl<> selb;
+	sdsl::rank_support_v<1> rankb;
+	sdsl::select_support_mcl<1> selb;
 	sdsl::wt_int<> s;
 };

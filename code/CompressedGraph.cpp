@@ -12,11 +12,13 @@ CompressedGraph::CompressedGraph(vector<vector<int> > adjList){
 	
 	int bsize = adjList.size();//tamaño de b
 
+	max_node=(int)ceil(sqrt(adjList.size()));
+
 	for(int i=0; i<adjList.size(); i++){
 
 		bsize += adjList[i].size();
 
-		catAL.push_back(-1);
+		catAL.push_back(max_node);
 		for(int j=0; j<adjList[i].size(); j++){
 			catAL.push_back(adjList[i][j]);
 		}
@@ -30,17 +32,18 @@ CompressedGraph::CompressedGraph(vector<vector<int> > adjList){
 		b[k] = 1;
 	}
 
+	
+	int_vector<> aL(catAL.size(), max_node, max_node);
 
-	int_vector<> aL(catAL.size(), -1, (int)ceil(sqrt(adjList.size())));
-	max_node=aL[0];
 	for (int i = 0; i != catAL.size(); ++i){
 		aL[i] = catAL[i];
+
 	}
 	
 	construct_im(s,aL);
 
-	rankb = rank_support_v<>(&b);
-	selb = select_support_mcl<>(&b);
+	rankb = rank_support_v<1>(&b);
+	selb = select_support_mcl<1>(&b);
 }
 
 CompressedGraph::~CompressedGraph(){
@@ -52,7 +55,7 @@ vector<int> CompressedGraph::getNeighbours(int a){
 we compute the starting point of the list of v, l ← select 1 (B, v), and then
 access S[l + i − 1].*/
 	vector<int> ans;
-	int sind=selb(a+1)+1, n;
+	int sind=selb.select(a+1)+1, n;
 	
 	n=s[sind];
 
@@ -85,31 +88,17 @@ tioned.*/
 
 bool CompressedGraph::checkConnection(int A, int B){
 	bit_vector v(rankb(b.size()-1),0);
-	
-	v[A]=1;
-
-	vector<int> n = getNeighbours(A);
-
-	for(int i=0; i<n.size(); i++){
-		if(n[i]==B)
-			return true;
-		else if(!v[n[i]] && cCDFS(n[i],B,v))
-			return true;
-	}
-	
-	return false;
+	cCDFS(A,B,v);
+	return v[B];
 }
 
-bool CompressedGraph::cCDFS(int A, int B, bit_vector v){
+void CompressedGraph::cCDFS(int A, int B, bit_vector v){
 	v[A]=1;
-
+	if(v[B])
+		return;
 	vector<int> n = getNeighbours(A);
-
 	for(int i=0; i<n.size(); i++){
-		if(n[i]==B)
-			return true;
-		else if(!v[n[i]])
+		if(!v[n[i]])
 			cCDFS(n[i],B,v);
 	}
-	return false;
 }

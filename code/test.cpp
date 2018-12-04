@@ -45,7 +45,7 @@ vector<pair<int,int> > readFile(char *file){
 vector<pair<int,int> > genGraph(int nn, int ne){
 	vector<pair<int,int> > res;
 
-	int cne=0,first, second;
+	int cne=0;
 
 	pair<int,int> aux;
 
