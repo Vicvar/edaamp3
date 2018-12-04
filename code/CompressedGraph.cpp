@@ -30,7 +30,7 @@ CompressedGraph::CompressedGraph(vector<vector<int> > adjList){
 		b[k] = 1;
 	}
 
-	int_vector<> aL(catAL.size(), 0, (int)ceil(sqrt(catAL.size())));
+	int_vector<> aL(catAL.size(), 0, (int)ceil(sqrt(adjList.size())));
 	for (int i = 0; i != catAL.size(); ++i)
 		aL[i] = catAL[i];
 	
