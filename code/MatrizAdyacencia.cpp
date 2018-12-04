@@ -43,7 +43,6 @@ void MatrizAdyacencia::DFS(int a, int b, bool visited[]){
 	visited[a] = true;
 	if(visited[b])
 		return;
-	vector<int>::iterator i; 
 	for (int i = 0; i != size; ++i) 
 		if (mat[a][i] && !visited[i]) 
 			DFS(i,  b, visited); 
