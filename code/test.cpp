@@ -1,0 +1,98 @@
+#include "CompressedGraph.h"
+#include "ListaAdyacencia.h"
+#include "MatrizAdyacencia.h"
+#include <iostream>
+#include <vector>
+#include <map>
+#include <fstream>
+#include <utility>
+#include <set>
+
+using namespace std;
+
+int nnodes;//global number of nodes
+
+vector<pair<int,int> > readFile(char *file){
+	ifstream fin(file);
+	vector<pair<int, int> > res;
+	int first, second;
+	map<int, int> new_ids;
+
+	while(fin.good()){
+		fin>>first>>second;
+		
+		//asign new ids starting from 0
+		if(new_ids.find(first)==new_ids.end())
+			new_ids.insert(make_pair(first,new_ids.size()));
+		first=new_ids[first];
+		
+		if(new_ids.find(second)==new_ids.end())
+			new_ids.insert(make_pair(second,new_ids.size()));
+		second=new_ids[second];
+
+		res.push_back(make_pair(first,second));
+	}
+
+	nnodes=new_ids.size();
+
+	return res;
+}
+
+vector<pair<int,int> > genGraph(int nn, int ne){
+	vector<pair<int,int> > res;
+
+	int cne=0,first, second;
+
+	pair<int,int> aux;
+
+	set<pair<int,int> > edges;
+
+	while(cne<ne){
+		aux=make_pair(rand()%nn, rand()%nn);
+		if(edges.find(aux)==edges.end()){
+			edges.insert(aux);
+			res.push_back(aux);
+			cne++;
+		}
+	}
+
+	nnodes=nn;
+
+	return res;
+}
+
+int main(int argc, char* argv[]){
+
+	if(argc!=3 && argc!=2){
+		cout<<"Generate graph and test different implementations"<<endl;
+		cout<<"Usage: "<<endl;
+		cout<<argv[0]<<" 'number of nodes' 'number of edges'"<<endl;
+		cout<<"or"<<endl;
+		cout<<argv[0]<<" 'edge list file name'"<<endl;
+		return 1;
+	}
+
+	vector<pair<int,int> > edgeList;
+
+	if(argc==3)
+		edgeList=genGraph(atoi(argv[1]), atoi(argv[2]));
+
+	else if(argc==2)
+		edgeList==readFile(argv[1]);
+
+	MatrizAdyacencia ma(nnodes); 
+	ListaAdyacencia li(nnodes); 
+
+	pair<int,int> aux;
+
+	for(int i=0; i<edgeList.size(); i++){
+		aux=edgeList[i];
+		ma.add(aux.first, aux.second);
+		li.add(aux.first, aux.second);
+	}
+
+	CompressedGraph cg(li.getL());
+
+
+
+}
