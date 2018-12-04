@@ -1,2 +1,2 @@
 all: test_cg.cpp
-	g++ -I ~/include -L ~/lib -o test_cg test_cg.cpp CompressedGraph.cpp  -lsdsl -ldivsufsort -ldivsufsort64
+	g++ -std=c++11 -O3 -DNDEBUG -I ~/include -L ~/lib test_cg.cpp CompressedGraph.cpp MatrizAdyacencia.cpp ListaAdyacencia.cpp -o test_cg -lsdsl -ldivsufsort -ldivsufsort64
