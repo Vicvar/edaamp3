@@ -29,7 +29,20 @@ int main(int argc, char const *argv[]){
 		ma.add(a,b);
 		li.add(a,b);
 	}
+
+	vector<int> r;
+	r=ma.getReverseNeighbours(2);
+	for (vector<int>::const_iterator i = r.begin(); i != r.end(); ++i)
+    cout << *i << ' ';
+	cout << '\n';
+
+	r=li.getReverseNeighbours(2);
+	for (vector<int>::const_iterator i = r.begin(); i != r.end(); ++i)
+    cout << *i << ' ';
+	cout << '\n';
+
 	CompressedGraph cg(li.getL());
+	cg.getReverseNeighbours(2);
 
 	return 0;
 }

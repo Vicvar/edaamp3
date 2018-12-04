@@ -11,5 +11,7 @@ public:
 	bool checkConnection(int, int);
 private:
 	sdsl::bit_vector b;
+	//sdsl::rank_support_v<> rankb;
+	//sdsl::select_support_mcl<> selb;
 	sdsl::wt_int<> s;
 };

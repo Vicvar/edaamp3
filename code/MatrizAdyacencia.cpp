@@ -50,4 +50,13 @@ bool MatrizAdyacencia::checkConnection(int a, int b){
 
 void MatrizAdyacencia::add(int a, int b){
 	mat[a][b]=true;
+	/*
+	for(int i = 0; i < size; i++){
+		for(int j = 0; j < size; j++){
+			cout << mat[i][j] << " ";
+		}
+		cout << "\n";
+	}
+	cout << "\n";
+	*/
 }
