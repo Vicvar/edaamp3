@@ -22,11 +22,20 @@ vector<int> ListaAdyacencia::getReverseNeighbours(int a){
 	return lin[a];
 }
 bool ListaAdyacencia::checkConnection(int a, int b){
-	vector<int>::iterator it = find (lout[a].begin(), lout[a].end(), b);
-	if (it != lout[a].end())
-		return true;
-	return false;
+	bool visit[lout.size()] = {false};
+	DFS(a, b, visit);
+	return visit[b];
 }
+
+void ListaAdyacencia::DFS(int a, int b, bool visited[]){
+	visited[a] = true;
+	if(visited[b])
+		return;
+	vector<int>::iterator i; 
+	for (i = lout[a].begin(); i != lout[a].end(); ++i) 
+		if (!visited[*i]) 
+			DFS(*i,  b, visited); 
+} 
 
 void ListaAdyacencia::add(int a, int b){
 	lout[a].push_back(b);

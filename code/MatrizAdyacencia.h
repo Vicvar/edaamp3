@@ -5,6 +5,7 @@ class MatrizAdyacencia{
 	private:
 		int size;
 		bool **mat;
+		void DFS(int a, int b, bool visited[]);
 	public:
 		MatrizAdyacencia(int n);
 		~MatrizAdyacencia();

@@ -5,6 +5,7 @@ class ListaAdyacencia{
 	private:
 		vector<vector<int> > lout;
 		vector<vector<int> > lin;
+		void DFS(int a, int b, bool visited[]);
 	public:
 		ListaAdyacencia(int n);
 		~ListaAdyacencia();
