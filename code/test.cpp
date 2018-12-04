@@ -7,6 +7,10 @@
 #include <fstream>
 #include <utility>
 #include <set>
+#include <ctime>
+#include <algorithm>
+
+#define NTEST 10
 
 using namespace std;
 
@@ -78,7 +82,8 @@ int main(int argc, char* argv[]){
 		edgeList=genGraph(atoi(argv[1]), atoi(argv[2]));
 
 	else if(argc==2)
-		edgeList==readFile(argv[1]);
+		edgeList= readFile(argv[1]);
+
 
 	MatrizAdyacencia ma(nnodes); 
 	ListaAdyacencia li(nnodes); 
@@ -93,6 +98,39 @@ int main(int argc, char* argv[]){
 
 	CompressedGraph cg(li.getL());
 
+	clock_t start, finish;
+
+	vector<int> test_nodes;
+
+	for(int i=0; i<NTEST; i++){
+		test_nodes.push_back(edgeList[rand()%edgeList.size()].first);
+		test_nodes.push_back(edgeList[rand()%edgeList.size()].second);
+	}
+
+	random_shuffle(test_nodes.begin(), test_nodes.end());
+
+	start=clock();
+
+	for(int i=0; i<test_nodes.size(); i+=2){
+		ma.checkConnection(test_nodes[i],test_nodes[i+1]);
+	}
+
+	cout<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
+
+	start=clock();
+
+	for(int i=0; i<test_nodes.size(); i+=2){
+		li.checkConnection(test_nodes[i],test_nodes[i+1]);
+	}
+
+	cout<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
 
 
+	start=clock();
+
+	for(int i=0; i<test_nodes.size(); i+=2){
+		cg.checkConnection(test_nodes[i],test_nodes[i+1]);
+	}
+
+	cout<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
 }
