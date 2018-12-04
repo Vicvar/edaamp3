@@ -84,7 +84,7 @@ tioned.*/
 /*	for (int i = 1; i <= lim; ++i)
 	{
 		p = s.select(i,a);
-		cout << p << endl;
+		cout << s[p] << endl;
 	}	
 */
 	vector<int> bbva(1,1);
