@@ -47,5 +47,7 @@ int main(int argc, char const *argv[]){
 	cout << *i << ' ';
 	cout << '\n';
 
+	cout<<cg.checkConnection(17,20)<<endl;
+
 	return 0;
 }
