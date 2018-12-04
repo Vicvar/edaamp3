@@ -96,16 +96,7 @@ bool CompressedGraph::checkConnection(int A, int B){
 		else if(!v[n[i]] && cCDFS(n[i],B,v))
 			return true;
 	}
-
-	n = getReverseNeighbours(A);
-
-	for(int i=0; i<n.size(); i++){
-		if(n[i]==B)
-			return true;
-		else if(!v[n[i]] && cCRDFS(n[i],B,v))
-			return true;
-	}	
-
+	
 	return false;
 }
 
@@ -119,20 +110,6 @@ bool CompressedGraph::cCDFS(int A, int B, bit_vector v){
 			return true;
 		else if(!v[n[i]])
 			cCDFS(n[i],B,v);
-	}
-	return false;
-}
-
-bool CompressedGraph::cCRDFS(int A, int B, bit_vector v){
-	v[A]=1;
-
-	vector<int> n = getReverseNeighbours(A);
-
-	for(int i=0; i<n.size(); i++){
-		if(n[i]==B)
-			return true;
-		else if(!v[n[i]])
-			cCRDFS(n[i],B,v);
 	}
 	return false;
 }
