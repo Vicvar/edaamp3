@@ -30,9 +30,12 @@ CompressedGraph::CompressedGraph(vector<vector<int> > adjList){
 		b[k] = 1;
 	}
 
-	int_vector<> aL(catAL.size(), 0, (int)ceil(sqrt(catAL.size())));
-	for (int i = 0; i != catAL.size(); ++i)
+	int_vector<> aL(catAL.size(), -1, (int)ceil(sqrt(adjList.size())));
+	max_node=aL[0];
+	for (int i = 0; i != catAL.size(); ++i){
 		aL[i] = catAL[i];
+		//cout<<aL[i]<<" "<<catAL[i]<<endl;
+	}
 	
 	construct_im(s,aL);
 
@@ -48,7 +51,20 @@ vector<int> CompressedGraph::getNeighbours(int a){
 /*To retrieve the i-th neighbor of a node v,
 we compute the starting point of the list of v, l ← select 1 (B, v), and then
 access S[l + i − 1].*/
+	vector<int> ans;
+	int sind=selb(a+1)+1, n;
+	
+	n=s[sind];
 
+	while(n!=max_node){
+		ans.push_back(n);
+		sind++;
+		if(sind>=s.size())
+			break;
+		n=s[sind];
+	}
+	
+	return ans;
 }
 
 vector<int> CompressedGraph::getReverseNeighbours(int a){

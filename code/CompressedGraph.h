@@ -10,6 +10,7 @@ public:
 	std::vector<int> getReverseNeighbours(int);
 	bool checkConnection(int, int);
 private:
+	int max_node;
 	sdsl::bit_vector b;
 	sdsl::rank_support_v<> rankb;
 	sdsl::select_support_mcl<> selb;
