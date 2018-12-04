@@ -33,16 +33,19 @@ int main(int argc, char const *argv[]){
 	vector<int> r;
 	r=ma.getReverseNeighbours(2);
 	for (vector<int>::const_iterator i = r.begin(); i != r.end(); ++i)
-    cout << *i << ' ';
+	cout << *i << ' ';
 	cout << '\n';
 
 	r=li.getReverseNeighbours(2);
 	for (vector<int>::const_iterator i = r.begin(); i != r.end(); ++i)
-    cout << *i << ' ';
+	cout << *i << ' ';
 	cout << '\n';
 
 	CompressedGraph cg(li.getL());
-	cg.getReverseNeighbours(2);
+	r=cg.getReverseNeighbours(2);
+	for (vector<int>::const_iterator i = r.begin(); i != r.end(); ++i)
+	cout << *i << ' ';
+	cout << '\n';
 
 	return 0;
 }
