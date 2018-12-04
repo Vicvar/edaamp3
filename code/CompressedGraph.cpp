@@ -34,12 +34,7 @@ CompressedGraph::CompressedGraph(vector<vector<int> > adjList){
 	cout << b[i];
 }	cout << endl;*/
 
-
-	int * arrayAL= catAL.data();
-
-	int_vector<> aL(*arrayAL);
-
-	construct_im(s,aL);
+	construct_im(s,catAL.data());
 
 }
 
