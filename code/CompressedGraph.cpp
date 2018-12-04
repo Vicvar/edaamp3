@@ -30,11 +30,11 @@ CompressedGraph::CompressedGraph(vector<vector<int> > adjList){
 		b[k] = 1;
 	}
 
+
 	int_vector<> aL(catAL.size(), -1, (int)ceil(sqrt(adjList.size())));
 	max_node=aL[0];
 	for (int i = 0; i != catAL.size(); ++i){
 		aL[i] = catAL[i];
-		//cout<<aL[i]<<" "<<catAL[i]<<endl;
 	}
 	
 	construct_im(s,aL);
