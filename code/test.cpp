@@ -98,6 +98,8 @@ int main(int argc, char* argv[]){
 
 	CompressedGraph cg(li.getL());
 
+	cout<<"Nodos:"<< nnodes <<" Aristas: "<<edgeList.size()<<endl;
+
 	cout<<"Tamaño MatrizAdyacencia: "<<ma.getSize()<<endl;
 	cout<<"Tamaño ListaAdyacencia: "<<li.getSize()<<endl;
 	cout<<"Tamaño CompressedGraph: "<<cg.getSize()<<endl;
@@ -121,7 +123,7 @@ int main(int argc, char* argv[]){
 		ma.getNeighbours(test_nodes[i]);
 	}
 
-	cout<<"Tiempo getNeighbours MatrizAdyacencia"<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
+	cout<<"Tiempo getNeighbours MatrizAdyacencia: "<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
 
 	start=clock();
 
@@ -129,7 +131,7 @@ int main(int argc, char* argv[]){
 		li.getNeighbours(test_nodes[i]);
 	}
 
-	cout<<"Tiempo getNeighbours ListaAdyacencia"<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
+	cout<<"Tiempo getNeighbours ListaAdyacencia: "<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
 
 
 	start=clock();
@@ -138,7 +140,7 @@ int main(int argc, char* argv[]){
 		cg.getNeighbours(test_nodes[i]);
 	}
 
-	cout<<"Tiempo getNeighbours CompressedGraph"<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
+	cout<<"Tiempo getNeighbours CompressedGraph: "<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
 
 	//getReverseNeighbours
 	start=clock();
@@ -147,7 +149,7 @@ int main(int argc, char* argv[]){
 		ma.getReverseNeighbours(test_nodes[i]);
 	}
 
-	cout<<"Tiempo getReverseNeighbours MatrizAdyacencia"<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
+	cout<<"Tiempo getReverseNeighbours MatrizAdyacencia: "<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
 
 	start=clock();
 
@@ -155,7 +157,7 @@ int main(int argc, char* argv[]){
 		li.getReverseNeighbours(test_nodes[i]);
 	}
 
-	cout<<"Tiempo getReverseNeighbours ListaAdyacencia"<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
+	cout<<"Tiempo getReverseNeighbours ListaAdyacencia: "<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
 
 
 	start=clock();
@@ -164,7 +166,7 @@ int main(int argc, char* argv[]){
 		cg.getReverseNeighbours(test_nodes[i]);
 	}
 
-	cout<<"Tiempo getReverseNeighbours CompressedGraph"<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
+	cout<<"Tiempo getReverseNeighbours CompressedGraph: "<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
 
 	//checkConnection
 	start=clock();
@@ -173,7 +175,7 @@ int main(int argc, char* argv[]){
 		ma.checkConnection(test_nodes[i],test_nodes[i+1]);
 	}
 
-	cout<<"Tiempo checkConnection MatrizAdyacencia"<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
+	cout<<"Tiempo checkConnection MatrizAdyacencia: "<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
 
 	start=clock();
 
@@ -181,7 +183,7 @@ int main(int argc, char* argv[]){
 		li.checkConnection(test_nodes[i],test_nodes[i+1]);
 	}
 
-	cout<<"Tiempo checkConnection ListaAdyacencia"<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
+	cout<<"Tiempo checkConnection ListaAdyacencia: "<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
 
 
 	start=clock();
@@ -190,5 +192,5 @@ int main(int argc, char* argv[]){
 		cg.checkConnection(test_nodes[i],test_nodes[i+1]);
 	}
 
-	cout<<"Tiempo checkConnection CompressedGraph"<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
+	cout<<"Tiempo checkConnection CompressedGraph: "<<(clock()-start)/(double)CLOCKS_PER_SEC<<endl;
 }
