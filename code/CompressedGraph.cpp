@@ -88,17 +88,17 @@ tioned.*/
 
 bool CompressedGraph::checkConnection(int A, int B){
 	bit_vector v(rankb(b.size()-1),0);
-	cCDFS(A,B,v);
+	cCDFS(A,B,&v);
 	return v[B];
 }
 
-void CompressedGraph::cCDFS(int A, int B, bit_vector v){
-	v[A]=1;
-	if(v[B])
+void CompressedGraph::cCDFS(int A, int B, bit_vector* v){
+	(*v)[A]=1;
+	if((*v)[B])
 		return;
 	vector<int> n = getNeighbours(A);
 	for(int i=0; i<n.size(); i++){
-		if(!v[n[i]])
+		if(!(*v)[n[i]])
 			cCDFS(n[i],B,v);
 	}
 }
