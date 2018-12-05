@@ -98,6 +98,10 @@ int main(int argc, char* argv[]){
 
 	CompressedGraph cg(li.getL());
 
+	cout<<ma.getSize()<<endl;
+	cout<<li.getSize()<<endl;
+	cout<<cg.getSize()<<endl;
+
 	clock_t start, finish;
 
 	vector<int> test_nodes;

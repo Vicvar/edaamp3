@@ -45,3 +45,14 @@ void ListaAdyacencia::add(int a, int b){
 vector<vector<int> > ListaAdyacencia::getL(){
 	return lout;
 }
+
+int ListaAdyacencia::getSize(){
+	int size=0;
+	for(int i=0; i<lin.size(); i++){
+		size+=lin[i].size();
+	}
+	for(int i=0; i<lout.size(); i++){
+		size+=lout[i].size();
+	}
+	return size*sizeof(int);
+}

@@ -3,12 +3,6 @@
 #include <vector>
 
 class CompressedGraph{
-public:
-	CompressedGraph(std::vector<std::vector<int> >);
-	~CompressedGraph();
-	std::vector<int> getNeighbours(int);
-	std::vector<int> getReverseNeighbours(int);
-	bool checkConnection(int, int);
 private:
 	void cCDFS(int, int, sdsl::bit_vector*);
 	int max_node;
@@ -16,4 +10,12 @@ private:
 	sdsl::rank_support_v<1> rankb;
 	sdsl::select_support_mcl<1> selb;
 	sdsl::wt_int<> s;
+public:
+	CompressedGraph(std::vector<std::vector<int> >);
+	~CompressedGraph();
+	std::vector<int> getNeighbours(int);
+	std::vector<int> getReverseNeighbours(int);
+	bool checkConnection(int, int);
+	int getSize();
+
 };

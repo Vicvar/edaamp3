@@ -102,3 +102,7 @@ void CompressedGraph::cCDFS(int A, int B, bit_vector* v){
 			cCDFS(n[i],B,v);
 	}
 }
+
+int CompressedGraph::getSize(){
+	return size_in_bytes(b)+size_in_bytes(s)+size_in_bytes(rankb)+size_in_bytes(selb);
+}

@@ -13,4 +13,5 @@ class MatrizAdyacencia{
 		vector<int> getReverseNeighbours(int a);
 		bool checkConnection(int a, int b);
 		void add(int a, int b);
+		int getSize();
 };

@@ -51,3 +51,7 @@ void MatrizAdyacencia::DFS(int a, int b, bool visited[]){
 void MatrizAdyacencia::add(int a, int b){
 	mat[a][b]=true;
 }
+
+int MatrizAdyacencia::getSize(){
+	return size*size*sizeof(int);
+}

@@ -14,4 +14,5 @@ class ListaAdyacencia{
 		bool checkConnection(int a, int b);
 		void add(int a, int b);
 		vector<vector<int> > getL();
+		int getSize();
 };
